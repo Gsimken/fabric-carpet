@@ -6,6 +6,7 @@ import carpet.utils.MobAI;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import me.lucko.fabric.api.permissions.v0.Permissions;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.registries.Registries;
@@ -22,6 +23,7 @@ public class MobAICommand
     {
         LiteralArgumentBuilder<CommandSourceStack> command = literal("track").
                 requires((player) -> CommandHelper.canUseCommand(player, CarpetSettings.commandTrackAI)).
+                requires(Permissions.require("carpet.command.track")).
                 then(argument("entity type", resource(commandBuildContext, Registries.ENTITY_TYPE)).
 
                         suggests( (c, b) -> suggest(MobAI.availbleTypes(c.getSource()), b)).

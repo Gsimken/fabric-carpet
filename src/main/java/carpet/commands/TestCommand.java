@@ -4,6 +4,7 @@ import carpet.CarpetServer;
 import carpet.utils.Messenger;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import me.lucko.fabric.api.permissions.v0.Permissions;
 import net.minecraft.commands.CommandSourceStack;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.getString;
@@ -15,8 +16,9 @@ public class TestCommand
 {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher)
     {
-        dispatcher.register(literal("testcarpet").
-                then(literal("dump").
+        dispatcher.register(literal("testcarpet")
+                .requires((player) -> Permissions.check(player ,"carpet.command.counter"))
+                .then(literal("dump").
                         executes((c) -> CarpetServer.settingsManager.dumpAllRulesToStream(System.out, null)).
                         then(argument("category", word()).
                                 executes( (c) -> CarpetServer.settingsManager.dumpAllRulesToStream(System.out, getString(c, "category"))))).

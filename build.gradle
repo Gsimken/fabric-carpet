@@ -15,13 +15,17 @@ loom {
 	accessWidenerPath = file("src/main/resources/carpet.accesswidener")
 	runtimeOnlyLog4j = true
 }
-
+repositories {
+	//fabric permission api
+	maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings loom.officialMojangMappings()
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
+	modImplementation include("me.lucko:fabric-permissions-api:0.2-SNAPSHOT")
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	//modImplementation "net.fabricmc:fabric:${project.fabric_version}"
 	//modCompileOnly fabricApi.module("fabric-rendering-v1", project.fabric_version)
@@ -79,5 +83,6 @@ publishing {
 		maven {
 			url "$projectDir/publish"
 		}
+
 	}
 }
