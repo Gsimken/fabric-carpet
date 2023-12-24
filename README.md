@@ -9,8 +9,8 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/gnembon/fabric-carpet?label=Contributors&logo=github)](https://github.com/gnembon/fabric-carpet/graphs/contributors)
 [![Discord](https://badgen.net/discord/online-members/gn99m4QRY4?icon=discord&label=Discord&list=what)](https://discord.gg/gn99m4QRY4)
 
-Fork of [Gnembon GitHub](https://github.com/gnembon/fabric-carpet/)
 
+# Fork of [Gnembon GitHub](https://github.com/gnembon/fabric-carpet/)
 ## Differences
 * added the posibility of using permission manager in dedicated servers
 
